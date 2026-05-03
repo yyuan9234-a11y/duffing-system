@@ -1,0 +1,17 @@
+function dx = Duffing(t,x,r)
+
+global r
+
+
+k=0.5;
+w=1;
+
+ dx=zeros(2,1);
+ dx(1)=w*(x(2));
+ dx(2)=w*(-k*(1+0.3*x(1)^2)*x(2)-x(1)^5+x(1)^3+r*cos(w*t));%本文提出的
+ dx=[dx(1);dx(2)];
+
+
+
+
+end
