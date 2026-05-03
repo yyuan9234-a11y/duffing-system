@@ -1,0 +1,21 @@
+clc
+clear
+global r 
+ C=0:0.001:1.5;
+% C=0.1:0.01:20;
+L=length(C);
+ ly=zeros(2,L);
+% ly=zeros(2,L);
+for i=1:L
+    r=C(i);
+    [T,Res]=lyapunov(2,@simlorenz_ly,@ode45,0,0.5,600,[0 0],5);
+    ly(:,i)=Res(end,:);
+end
+save('lyapunov.mat');
+% load 5.5_b.mat
+figure(1)
+plot(C,ly,'LineWidth',1)
+xlabel('\itr','FontSize',12,'FontName','Times New Roman');
+ylabel('Lyapunov指数谱','FontSize',12,'FontName','Times New Roman');
+set(gca,'YDir','normal')
+set(gca,'FontSize',12,'FontName','Times New Roman');
